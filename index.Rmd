@@ -1,250 +1,271 @@
 ---
-title       : Reproducible Research with R
-subtitle    : Made with slidify
+title       : Is There a Pythagorean Theorem for Winning in Tennis?
 author      : Stephanie Kovalchik
-job         :  RAND Statistics Group
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+job         : NESSIS 2015, Cambridge, MA
+framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax, bootstrap]           # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 url:
   assets: ./assets
---- 
+--- &twocol
 
-## Reproducibility
-
-> * Reproducibile research is research that can be independently replicated
-
-> * Traditionally, researchers have separated data analysis and the documentation describing the analysis and its findings
-
-> * This makes updating work inefficient and reproducibility difficult or even impossible
-
-> * Aiming for _reproducibility_ gives you _reusability_ for free
-
---- 
-
-## Heroes of Reproducible Research
-
-<div style='text-align: center;'>
-    <img alt="Coombes and Baggerly" height='420' src='./assets/img/coombes_baggerly_nytimes.jpg' />
-</div>
-
-"Keith Baggerly, left, and Kevin Coombes, statisticians at M. D. Anderson Cancer Center, [found flaws in research on tumors](http://www.nytimes.com/2011/07/08/health/research/08genes.html?_r=0)." Credit: Michael Stravato for The New York Times
-
----
-
-<div style='text-align: center;'>
-    <img alt="Development Cycle" height='560' src='./assets/img/development_cycle.png' />
-</div>
-
-> The goal of this talk is to introduce several tools in R that help to make the practice of the development cycle easy.
-
----
-
-## Getting Started
-
-1. Get [RStudio](https://www.rstudio.com)
-
-2. Install `knitr` and `rmarkdown` packages
-
-3. Get Git
-
----
-
-## RStudio
-
-> * [RStudio](https://www.rstudio.com) is a free integrated development environment for R
-
-> * Available for all major platforms
-
-> * The IDE provides a windowing system to help organize the workspace
-
-> * There are [built-in tools](https://www.rstudio.com/products/rstudio/features/) for directed code execution, syntax highlighting, and debugging
-
-> * There is a GUI for many common tasks including the creation and processing of reproducible reports
-
-
-
----
-
-## R Markdown
-
-> - Dynamic documents in R start with an R Markdown file
-
-> - Markdown is a markup language with minimal syntax
-    - Easier than LaTeX
-    - Recognized by many rendering tools
-    - NOT exclusive to R
-    
-> - R Markdown builds on markdown syntax but adds the ability to embed executable R code inline or as code chunks
-
-> - The `knit` function of knitr is used to produce a file with text, code, and results of code
-
-
---- 
-
-## R Markdown Resources
+## The General Pythagorean Theorem 
 
 <br>
 
-* [Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) - Workflow steps and basic features
+***=left
 
-* [Reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) - Details on syntax and chunk options
+> * Simple formula for win expectation in head-to-head competition 
 
----
+> * Based on a single measure of player-opponent relative strength&mdash;$X/Y$
 
-## Minimal Example: R Markdown
+***=right
+
+$$
+Win\% = \frac{X^\alpha}{X^\alpha + Y^\alpha}
+$$
+
 
 <br>
 
-File available on [GitHub](https://github.com/skoval/Reproducibility/blob/master/examples/minimal_markdown.Rmd)
+<div style='text-align: center;'>
+    <img alt="Arm-Wrestling" height='300' width='300' src='./assets/img/arm.jpg' />
+</div>
 
---- &twocol .small
+--- &twocol
 
-## The knitr Package
-
+## Origins of the Pythagorean Theorem
 
 *** =left 
 
-* <img alt="Yihui" height='80' src='./assets/img/yihui.jpg' /> Author and R Ninja, Yihui Xie
+> * First proposed by Bill James (father of sabermetrics) for $Win\%$ in MLB
 
-* Provides tools for creating dynamic documents
+> * James used $\alpha = 2$, because _Pythagoras_
 
-* Use to weave text and code in multiple languages
+> * $X =$ Runs Scored
 
-* Multiple input formats: Rnw, Markdown, HTML, LaTeX
+> * $Y =$ Runs Allowed
 
-* Multiple output formats: pdf, Word, HTML
-  
-* RStudio's default engine for weaving dynamic documents is [knitr](http://yihui.name/knitr/demo/rstudio/)
+
+*** =right 
+
+<br>
+
+<div style='text-align: center;'>
+    <img alt="Baseball Abstract" height='500' width='500' src='./assets/img/bill_james_pythag.png' />
+</div>
+
+
+--- &twocol 
+
+## Is There a Pythagorean Model for Tennis?
+
+* The PT has been extended to most major team sports _but_ not an individual sport
+
+*** =left
+
+<div style='text-align: center;'>
+    <img alt="Federer US Open Final" height='800' width='800' src='./assets/img/federer_open.jpg' />
+</div>
+
 
 *** =right
 
-<div style='text-align: center;'>
-    <img alt="knitr book" height='420' src='./assets/img/knitr_book.png' />
-</div>
+<span style="color: #1565C0;">This talk will introduce a Pythagorean model for one individual head-to-head sport: **tennis**</span>
 
 ---
 
-## Knit in Console or RStudio?
+## Research Questions
 
-You can knit R Markdown files manually with `knit` or with RStudio's GUI. In other words, the following are equivalent:
+<ul style="margin-top:5%;">
+<li>Q1. Which measure of strength gives the best PM in tennis?</li>
+<li>Q2. How does performance of the best PM compare to&mdash;</li>
+    <ul>
+    <li style="margin-left:10%;font-style: italic;">Win-loss record?</li>
+    <li style="margin-left:10%;font-style: italic;">A multivariate model?</li>
+    <li style="margin-left:10%;font-style: italic;">A multivarite model with player ranking?</li>
+    </ul>
+<li>Q3. Can the best PM predict match outcomes?</li>
+</ul>
 
-```{r eval = FALSE}
-knit("minimal_example.Rmd")
-```
+---
+
+## Measures of Strength in Tennis
+
+<div style='text-align: center;'>
+    <img alt="US Open Men's Final" height='550' width='800' src='./assets/img/usopen_final.png' />
+</div>
+
+
+<span style="font-size: 18px;">Source: flashscore.com</span>
+
+---
+
+## Data Set
+
+* **Training**
+
+   - 53,442 ATP singles matches, 2004 - 2014
+
+   - Matches including a top 100 player
+
+   - 250-level and above
+
+* **Validation**
+
+   - 1,377 ATP singles matches in 2015
 
 <br>
 
+<span style="font-size: 20px;">ATP = Association of Tennis Professionals</span>
+
+
+---
+
+## Summary of Pythagorean Models
+
 <div style='text-align: center;'>
-    <img alt="knitr gui" height='320' src='./assets/img/knitr_gui.png' />
+    <img alt="Model Fit" height='550' width='700' src='./assets/img/bestfit.png' />
+</div>
+
+
+---
+
+## Pythagorean Coefficients
+
+<div style='text-align: center;'>
+    <img alt="Model Fit" height='400' width='500' src='./assets/img/exponent.png' />
 </div>
 
 ---
 
-## Knit in Console or RStudio?
+## Mid-Season Projections
 
-> * If you want to use input other than R Markdown, you will want to use `knit` directly (i.e. on the command line).
+<div class="boxed"><p><u>Mid-season projections</u> estimate end-of-year $Win\%$ at mid-year</p></div>
 
-> * The advantage of `knitr` is that it provides more control and flexibility in document inputs
+> * In what follows, we compare 2004 - 2014 projections of the Pythagorean break point model (BP$^2$) against:
+    - Win-loss record
+    - Multivariate model with 11 performance stats
+    - Multivariate model + Player ranking
 
-> * This is often needed for creating publication-ready reports
+--- &twocol 
 
----
+## Win-Loss Projections
 
-## Minimal Example: R Latex
-
-
-File available on [GitHub](https://github.com/skoval/Reproducibility/blob/master/examples/minimal_markdown.Rtex)
-
-
----
-
-## Version Control
-
-
-> * _Version control_ describes the process of tracking the history of a project's development so that developers can easily see changes made and revert to earlier versions
-
-> * Git is the most popular version control tool
-
-> * [Github](https://github.com) is a cloud service for sharing and collaborating on projects using Git 
-
-> * <img alt="Git" height='120' src='./assets/img/try_git.png' /> 
-
----
-
-## Git Cheat Sheet
-
+***=left
 
 <div style='text-align: center;'>
-    <img alt="Git Cheat Sheet" height='480' src='./assets/img/git_cheatsheet.png' />
+    <img alt="Win-Loss Record" height='600' width='600' src='./assets/img/winloss.png' />
 </div>
 
-Source: [http://git.or.cz/](http://www.cheat-sheets.org/saved-copy/git-cheat-sheet.pdf)
 
---- .small
-
-
-## Getting Started
-
-* You can work with [Git](http://git-scm.com) on the command line
-
-* Or, use a GUI for [Windows](https://windows.github.com) or [Mac](https://mac.github.com)
-
-|Term| What it Means |
-|:--------:|:--------:|
-|repo| The "project", i.e. directory where Git project resides|
-|commit| Saving changes to version history (NOT the same as saving files)|
-|origin|Alias usually given to remote repo|
-|master|Alias usually given to local repo|
+***=right
 
 <br>
 
-|Command | What it Does |
-|:--------:|:--------:|
-|git init | Start a repo|
-|git add | Add files to repo|
-|git commit -m|Commit changes to history and add message|
-|git push origin master|Push commits to remote alias|
+|Model|50-Match RMSE|
+|:--:|:--:|
+|BP$^2$|$\pm 2.1$|
+|Win-Loss|$\pm 2.7$|
 
---- .small
+--- &twocol 
 
-## RAND Code Exchange
+## Multivariate Projections
+
+***=left
 
 <div style='text-align: center;'>
-    <img alt="code exchange" height='280' src='./assets/img/code_exchange.png' />
+    <img alt="Multivariate" height='600' width='600' src='./assets/img/full.png' />
 </div>
 
-> * RAND's firewall prevents interacting with remote repos on GitHub 
 
-> * This is a barrier when collaborating on projects with external researchers
+***=right
 
-> * However, for internal projects, RAND's [Code Exchange](code-exchange.rand.org) is a service much like GitHub but more secure 
+<br>
 
---- .small
+|Model|50-Match RMSE|
+|:--:|:--:|
+|BP$^2$|$\pm 2.1$|
+|Multivariate|$\pm 1.8$|
 
-## Slidify
+--- &twocol 
 
-> * The great thing about learning and using markdown is that more and more interactive tools are using it
+## Multivariate + Rank Projections
 
-> * One awesome example of this is [slidify](http://slidify.org)
+***=left
 
-> * Slidify is a package by Ramnath Vaidyanathan that uses markdown-like documents to create HTML5 presentations
+<div style='text-align: center;'>
+    <img alt="Multivariate + Rank" height='600' width='600' src='./assets/img/rank.png' />
+</div>
 
-> * If you can write markdown, you can get started with slidify pretty quickly
 
-> * This presentation is an [example](https://github.com/skoval/Reproducibility/blob/master/index.Rmd)
+***=right
 
-> * RStudio's presentations are another option
+<br>
+
+|Model|50-Match RMSE|
+|:--:|:--:|
+|BP$^2$|$\pm 2.1$|
+|Multivariate|$\pm 2.0$|
+
+---
+
+## Match Prediction
+
+* So far, I have only considered performance for estimating $Win\%$ over many matches
+
+* Pythagorean expectation _isn't_ a probability for a given match but it may be a predictor of that probability
+
+<div class="boxed"><h2>Can BP$^2$ be used to predict the outcomes of individual matches?</h2></div>
+
+---
+
+## Prediction Accuracy for ATP 2015 
+
+<br>
+
+|Look Back|BP$^2$|Multivariate|Win-Loss|
+|:---|:---:|:---:|:---:|
+|3 months | 64.2 | 63.3|63.8|
+|6 months | 64.3 |64.3|64.1|
+|9 months | 66.9 |66.7|65.8|
+|12 months | 65.8|66.5 |66.5|
+
+<br>
+
+For each approach, a "Win" is assigned to the player with the higher pre-match win expectation.
+
+---
+
+## Conclusions
+
+> * Relative break point conversion is strongly predictive of player win expectation in tennis
+
+> * The relationship between break point and win expectation is remarkably close to the Pythagorean formulation in baseball
+
+> * BP$^2$ outperforms win-loss record for predicting win expectation and match outcomes and performs comparably to more complex model-based approaches
 
 
 ---
 
-## Reference Material
+## BP$^2$ Insights on Federer's 2015 Season
+
+
+<div style='text-align: center;'>
+    <img alt="Federer" height='400' width='900' src='./assets/img/federer.png' />
+</div>
+
+* BP$^2$ expected 54.8 wins for Federer in 2015
+* His actual record was 51-8
+
+---
+
+## Thank You
 
 <br>
 
-* [Slide deck](http://skoval.github.io/Reproducibility/)
+* Slide deck at [http://skoval.github.io/Pythagoras/](http://skoval.github.io/Pythagoras/)
 
-* [Source on github](https://github.com/skoval/Reproducibility/)
+* Follow me at [on-the-t.com](http://on-the-t.com) and on Twitter @StatsOnTheT

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reproducible Research with R</title>
+  <title>Is There a Pythagorean Theorem for Winning in Tennis?</title>
   <meta charset="utf-8">
-  <meta name="description" content="Reproducible Research with R">
+  <meta name="description" content="Is There a Pythagorean Theorem for Winning in Tennis?">
   <meta name="author" content="Stephanie Kovalchik">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +13,8 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/css.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/css.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
@@ -33,9 +34,10 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Reproducible Research with R</h1>
-    <h2>Made with slidify</h2>
-    <p>Stephanie Kovalchik<br/>RAND Statistics Group</p>
+    <h1>Is There a Pythagorean Theorem for Winning in Tennis?</h1>
+    <h2></h2>
+    <h2>Stephanie Kovalchik</h2>
+    <h2>NESSIS 2015, Cambridge, MA</h2>
   </hgroup>
   <article></article>  
 </slide>
@@ -44,59 +46,99 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Reproducibility</h2>
+    <h2>The General Pythagorean Theorem</h2>
   </hgroup>
   <article data-timings="">
-    <ul class = "build incremental">
-<li><p>Reproducibile research is research that can be independently replicated</p></li>
-<li><p>Traditionally, researchers have separated data analysis and the documentation describing the analysis and its findings</p></li>
-<li><p>This makes updating work inefficient and reproducibility difficult or even impossible</p></li>
-<li><p>Aiming for <em>reproducibility</em> gives you <em>reusability</em> for free</p></li>
+    <p><br></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><p>Simple formula for win expectation in head-to-head competition </p></li>
+<li><p>Based on a single measure of player-opponent relative strength&mdash;\(X/Y\)</p></li>
 </ul>
 
+</div>
+<div style='float:right;width:48%;'>
+  <p>\[
+Win\% = \frac{X^\alpha}{X^\alpha + Y^\alpha}
+\]</p>
+
+<p><br></p>
+
+<div style='text-align: center;'>
+    <img alt="Arm-Wrestling" height='300' width='300' src='./assets/img/arm.jpg' />
+</div>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Heroes of Reproducible Research</h2>
+    <h2>Origins of the Pythagorean Theorem</h2>
   </hgroup>
   <article data-timings="">
-    <div style='text-align: center;'>
-    <img alt="Coombes and Baggerly" height='420' src='./assets/img/coombes_baggerly_nytimes.jpg' />
+    
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><p>First proposed by Bill James (father of sabermetrics) for \(Win\%\) in MLB</p></li>
+<li><p>James used \(\alpha = 2\), because <em>Pythagoras</em></p></li>
+<li><p>\(X =\) Runs Scored</p></li>
+<li><p>\(Y =\) Runs Allowed</p></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><br></p>
+
+<div style='text-align: center;'>
+    <img alt="Baseball Abstract" height='500' width='500' src='./assets/img/bill_james_pythag.png' />
 </div>
 
-<p>&quot;Keith Baggerly, left, and Kevin Coombes, statisticians at M. D. Anderson Cancer Center, <a href="http://www.nytimes.com/2011/07/08/health/research/08genes.html?_r=0">found flaws in research on tumors</a>.&quot; Credit: Michael Stravato for The New York Times</p>
-
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Is There a Pythagorean Model for Tennis?</h2>
+  </hgroup>
   <article data-timings="">
-    <div style='text-align: center;'>
-    <img alt="Development Cycle" height='560' src='./assets/img/development_cycle.png' />
+    <ul>
+<li>The PT has been extended to most major team sports <em>but</em> not an individual sport</li>
+</ul>
+
+<div style='float:left;width:48%;' class='centered'>
+  <div style='text-align: center;'>
+    <img alt="Federer US Open Final" height='800' width='800' src='./assets/img/federer_open.jpg' />
 </div>
 
-<blockquote>
-<p>The goal of this talk is to introduce several tools in R that help to make the practice of the development cycle easy.</p>
-</blockquote>
+</div>
+<div style='float:right;width:48%;'>
+  <p><span style="color: #1565C0;">This talk will introduce a Pythagorean model for one individual head-to-head sport: <strong>tennis</strong></span></p>
 
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Getting Started</h2>
+    <h2>Research Questions</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li><p>Get <a href="https://www.rstudio.com">RStudio</a></p></li>
-<li><p>Install <code>knitr</code> and <code>rmarkdown</code> packages</p></li>
-<li><p>Get Git</p></li>
-</ol>
+    <ul style="margin-top:5%;">
+<li>Q1. Which measure of strength gives the best PM in tennis?</li>
+<li>Q2. How does performance of the best PM compare to&mdash;</li>
+    <ul>
+    <li style="margin-left:10%;font-style: italic;">Win-loss record?</li>
+    <li style="margin-left:10%;font-style: italic;">A multivariate model?</li>
+    <li style="margin-left:10%;font-style: italic;">A multivarite model with player ranking?</li>
+    </ul>
+<li>Q3. Can the best PM predict match outcomes?</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -104,16 +146,14 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>RStudio</h2>
+    <h2>Measures of Strength in Tennis</h2>
   </hgroup>
   <article data-timings="">
-    <ul class = "build incremental">
-<li><p><a href="https://www.rstudio.com">RStudio</a> is a free integrated development environment for R</p></li>
-<li><p>Available for all major platforms</p></li>
-<li><p>The IDE provides a windowing system to help organize the workspace</p></li>
-<li><p>There are <a href="https://www.rstudio.com/products/rstudio/features/">built-in tools</a> for directed code execution, syntax highlighting, and debugging</p></li>
-<li><p>There is a GUI for many common tasks including the creation and processing of reproducible reports</p></li>
-</ul>
+    <div style='text-align: center;'>
+    <img alt="US Open Men's Final" height='550' width='800' src='./assets/img/usopen_final.png' />
+</div>
+
+<p><span style="font-size: 18px;">Source: flashscore.com</span></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -121,21 +161,27 @@
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h2>R Markdown</h2>
+    <h2>Data Set</h2>
   </hgroup>
   <article data-timings="">
-    <ul class = "build incremental">
-<li><p>Dynamic documents in R start with an R Markdown file</p></li>
-<li><p>Markdown is a markup language with minimal syntax</p>
+    <ul>
+<li><p><strong>Training</strong></p>
 
 <ul>
-<li>Easier than LaTeX</li>
-<li>Recognized by many rendering tools</li>
-<li>NOT exclusive to R</li>
+<li>53,442 ATP singles matches, 2004 - 2014</li>
+<li>Matches including a top 100 player</li>
+<li>250-level and above</li>
 </ul></li>
-<li><p>R Markdown builds on markdown syntax but adds the ability to embed executable R code inline or as code chunks</p></li>
-<li><p>The <code>knit</code> function of knitr is used to produce a file with text, code, and results of code</p></li>
+<li><p><strong>Validation</strong></p>
+
+<ul>
+<li>1,377 ATP singles matches in 2015</li>
+</ul></li>
 </ul>
+
+<p><br></p>
+
+<p><span style="font-size: 20px;">ATP = Association of Tennis Professionals</span></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -143,15 +189,12 @@
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>R Markdown Resources</h2>
+    <h2>Summary of Pythagorean Models</h2>
   </hgroup>
   <article data-timings="">
-    <p><br></p>
-
-<ul>
-<li><p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Cheat sheet</a> - Workflow steps and basic features</p></li>
-<li><p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">Reference</a> - Details on syntax and chunk options</p></li>
-</ul>
+    <div style='text-align: center;'>
+    <img alt="Model Fit" height='550' width='700' src='./assets/img/bestfit.png' />
+</div>
 
   </article>
   <!-- Presenter Notes -->
@@ -159,101 +202,157 @@
 
 <slide class="" id="slide-8" style="background:;">
   <hgroup>
-    <h2>Minimal Example: R Markdown</h2>
+    <h2>Pythagorean Coefficients</h2>
   </hgroup>
   <article data-timings="">
-    <p><br></p>
-
-<p>File available on <a href="https://github.com/skoval/Reproducibility/blob/master/examples/minimal_markdown.Rmd">GitHub</a></p>
+    <div style='text-align: center;'>
+    <img alt="Model Fit" height='400' width='500' src='./assets/img/exponent.png' />
+</div>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="small" id="slide-9" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>The knitr Package</h2>
+    <h2>Mid-Season Projections</h2>
   </hgroup>
   <article data-timings="">
-    
-<div style='float:left;width:48%;' class='centered'>
-  <ul>
-<li><p><img alt="Yihui" height='80' src='./assets/img/yihui.jpg' /> Author and R Ninja, Yihui Xie</p></li>
-<li><p>Provides tools for creating dynamic documents</p></li>
-<li><p>Use to weave text and code in multiple languages</p></li>
-<li><p>Multiple input formats: Rnw, Markdown, HTML, LaTeX</p></li>
-<li><p>Multiple output formats: pdf, Word, HTML</p></li>
-<li><p>RStudio&#39;s default engine for weaving dynamic documents is <a href="http://yihui.name/knitr/demo/rstudio/">knitr</a></p></li>
+    <div class="boxed"><p><u>Mid-season projections</u> estimate end-of-year $Win\%$ at mid-year</p></div>
+
+<ul class = "build incremental">
+<li>In what follows, we compare 2004 - 2014 projections of the Pythagorean break point model (BP\(^2\)) against:
+
+<ul>
+<li>Win-loss record</li>
+<li>Multivariate model with 11 performance stats</li>
+<li>Multivariate model + Player ranking</li>
+</ul></li>
 </ul>
 
-</div>
-<div style='float:right;width:48%;'>
-  <div style='text-align: center;'>
-    <img alt="knitr book" height='420' src='./assets/img/knitr_book.png' />
-</div>
-
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>Knit in Console or RStudio?</h2>
+    <h2>Win-Loss Projections</h2>
   </hgroup>
   <article data-timings="">
-    <p>You can knit R Markdown files manually with <code>knit</code> or with RStudio&#39;s GUI. In other words, the following are equivalent:</p>
-
-<pre><code class="r">knit(&quot;minimal_example.Rmd&quot;)
-</code></pre>
-
-<p><br></p>
-
-<div style='text-align: center;'>
-    <img alt="knitr gui" height='320' src='./assets/img/knitr_gui.png' />
+    
+<div style='float:left;width:48%;' class='centered'>
+  <div style='text-align: center;'>
+    <img alt="Win-Loss Record" height='600' width='600' src='./assets/img/winloss.png' />
 </div>
 
+</div>
+<div style='float:right;width:48%;'>
+  <p><br></p>
+
+<table><thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">50-Match RMSE</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">BP\(^2\)</td>
+<td align="center">\(\pm 2.1\)</td>
+</tr>
+<tr>
+<td align="center">Win-Loss</td>
+<td align="center">\(\pm 2.7\)</td>
+</tr>
+</tbody></table>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-11" style="background:;">
   <hgroup>
-    <h2>Knit in Console or RStudio?</h2>
+    <h2>Multivariate Projections</h2>
   </hgroup>
   <article data-timings="">
-    <ul class = "build incremental">
-<li><p>If you want to use input other than R Markdown, you will want to use <code>knit</code> directly (i.e. on the command line).</p></li>
-<li><p>The advantage of <code>knitr</code> is that it provides more control and flexibility in document inputs</p></li>
-<li><p>This is often needed for creating publication-ready reports</p></li>
-</ul>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <div style='text-align: center;'>
+    <img alt="Multivariate" height='600' width='600' src='./assets/img/full.png' />
+</div>
 
+</div>
+<div style='float:right;width:48%;'>
+  <p><br></p>
+
+<table><thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">50-Match RMSE</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">BP\(^2\)</td>
+<td align="center">\(\pm 2.1\)</td>
+</tr>
+<tr>
+<td align="center">Multivariate</td>
+<td align="center">\(\pm 1.8\)</td>
+</tr>
+</tbody></table>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Minimal Example: R Latex</h2>
+    <h2>Multivariate + Rank Projections</h2>
   </hgroup>
   <article data-timings="">
-    <p>File available on <a href="https://github.com/skoval/Reproducibility/blob/master/examples/minimal_markdown.Rtex">GitHub</a></p>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <div style='text-align: center;'>
+    <img alt="Multivariate + Rank" height='600' width='600' src='./assets/img/rank.png' />
+</div>
 
+</div>
+<div style='float:right;width:48%;'>
+  <p><br></p>
+
+<table><thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">50-Match RMSE</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">BP\(^2\)</td>
+<td align="center">\(\pm 2.1\)</td>
+</tr>
+<tr>
+<td align="center">Multivariate</td>
+<td align="center">\(\pm 2.0\)</td>
+</tr>
+</tbody></table>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-13" style="background:;">
   <hgroup>
-    <h2>Version Control</h2>
+    <h2>Match Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <ul class = "build incremental">
-<li><p><em>Version control</em> describes the process of tracking the history of a project&#39;s development so that developers can easily see changes made and revert to earlier versions</p></li>
-<li><p>Git is the most popular version control tool</p></li>
-<li><p><a href="https://github.com">Github</a> is a cloud service for sharing and collaborating on projects using Git </p></li>
-<li><p><img alt="Git" height='120' src='./assets/img/try_git.png' /> </p></li>
+    <ul>
+<li><p>So far, I have only considered performance for estimating \(Win\%\) over many matches</p></li>
+<li><p>Pythagorean expectation <em>isn&#39;t</em> a probability for a given match but it may be a predictor of that probability</p></li>
 </ul>
+
+<div class="boxed"><h2>Can BP$^2$ be used to predict the outcomes of individual matches?</h2></div>
 
   </article>
   <!-- Presenter Notes -->
@@ -261,130 +360,96 @@
 
 <slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h2>Git Cheat Sheet</h2>
+    <h2>Prediction Accuracy for ATP 2015</h2>
   </hgroup>
   <article data-timings="">
-    <div style='text-align: center;'>
-    <img alt="Git Cheat Sheet" height='480' src='./assets/img/git_cheatsheet.png' />
-</div>
-
-<p>Source: <a href="http://www.cheat-sheets.org/saved-copy/git-cheat-sheet.pdf">http://git.or.cz/</a></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="small" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>Getting Started</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>You can work with <a href="http://git-scm.com">Git</a> on the command line</p></li>
-<li><p>Or, use a GUI for <a href="https://windows.github.com">Windows</a> or <a href="https://mac.github.com">Mac</a></p></li>
-</ul>
+    <p><br></p>
 
 <table><thead>
 <tr>
-<th align="center">Term</th>
-<th align="center">What it Means</th>
+<th align="left">Look Back</th>
+<th align="center">BP\(^2\)</th>
+<th align="center">Multivariate</th>
+<th align="center">Win-Loss</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="center">repo</td>
-<td align="center">The &quot;project&quot;, i.e. directory where Git project resides</td>
+<td align="left">3 months</td>
+<td align="center">64.2</td>
+<td align="center">63.3</td>
+<td align="center">63.8</td>
 </tr>
 <tr>
-<td align="center">commit</td>
-<td align="center">Saving changes to version history (NOT the same as saving files)</td>
+<td align="left">6 months</td>
+<td align="center">64.3</td>
+<td align="center">64.3</td>
+<td align="center">64.1</td>
 </tr>
 <tr>
-<td align="center">origin</td>
-<td align="center">Alias usually given to remote repo</td>
+<td align="left">9 months</td>
+<td align="center">66.9</td>
+<td align="center">66.7</td>
+<td align="center">65.8</td>
 </tr>
 <tr>
-<td align="center">master</td>
-<td align="center">Alias usually given to local repo</td>
+<td align="left">12 months</td>
+<td align="center">65.8</td>
+<td align="center">66.5</td>
+<td align="center">66.5</td>
 </tr>
 </tbody></table>
 
 <p><br></p>
 
-<table><thead>
-<tr>
-<th align="center">Command</th>
-<th align="center">What it Does</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="center">git init</td>
-<td align="center">Start a repo</td>
-</tr>
-<tr>
-<td align="center">git add</td>
-<td align="center">Add files to repo</td>
-</tr>
-<tr>
-<td align="center">git commit -m</td>
-<td align="center">Commit changes to history and add message</td>
-</tr>
-<tr>
-<td align="center">git push origin master</td>
-<td align="center">Push commits to remote alias</td>
-</tr>
-</tbody></table>
+<p>For each approach, a &quot;Win&quot; is assigned to the player with the higher pre-match win expectation.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="small" id="slide-16" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h2>RAND Code Exchange</h2>
-  </hgroup>
-  <article data-timings="">
-    <div style='text-align: center;'>
-    <img alt="code exchange" height='280' src='./assets/img/code_exchange.png' />
-</div>
-
-<ul class = "build incremental">
-<li><p>RAND&#39;s firewall prevents interacting with remote repos on GitHub </p></li>
-<li><p>This is a barrier when collaborating on projects with external researchers</p></li>
-<li><p>However, for internal projects, RAND&#39;s <a href="code-exchange.rand.org">Code Exchange</a> is a service much like GitHub but more secure </p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="small" id="slide-17" style="background:;">
-  <hgroup>
-    <h2>Slidify</h2>
+    <h2>Conclusions</h2>
   </hgroup>
   <article data-timings="">
     <ul class = "build incremental">
-<li><p>The great thing about learning and using markdown is that more and more interactive tools are using it</p></li>
-<li><p>One awesome example of this is <a href="http://slidify.org">slidify</a></p></li>
-<li><p>Slidify is a package by Ramnath Vaidyanathan that uses markdown-like documents to create HTML5 presentations</p></li>
-<li><p>If you can write markdown, you can get started with slidify pretty quickly</p></li>
-<li><p>This presentation is an <a href="https://github.com/skoval/Reproducibility/blob/master/index.Rmd">example</a></p></li>
-<li><p>RStudio&#39;s presentations are another option</p></li>
+<li><p>Relative break point conversion is strongly predictive of player win expectation in tennis</p></li>
+<li><p>The relationship between break point and win expectation is remarkably close to the Pythagorean formulation in baseball</p></li>
+<li><p>BP\(^2\) outperforms win-loss record for predicting win expectation and match outcomes and performs comparably to more complex model-based approaches</p></li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
-    <h2>Reference Material</h2>
+    <h2>BP\(^2\) Insights on Federer&#39;s 2015 Season</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align: center;'>
+    <img alt="Federer" height='400' width='900' src='./assets/img/federer.png' />
+</div>
+
+<ul>
+<li>BP\(^2\) expected 54.8 wins for Federer in 2015</li>
+<li>His actual record was 51-8</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Thank You</h2>
   </hgroup>
   <article data-timings="">
     <p><br></p>
 
 <ul>
-<li><p><a href="http://skoval.github.io/Reproducibility/">Slide deck</a></p></li>
-<li><p><a href="https://github.com/skoval/Reproducibility/">Source on github</a></p></li>
+<li><p>Slide deck at <a href="http://skoval.github.io/Pythagoras/">http://skoval.github.io/Pythagoras/</a></p></li>
+<li><p>Follow me at <a href="http://on-the-t.com">on-the-t.com</a> and on Twitter @StatsOnTheT</p></li>
 </ul>
 
   </article>
@@ -397,110 +462,104 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Reproducibility'>
+        data-slide=1 title='The General Pythagorean Theorem'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Heroes of Reproducible Research'>
+        data-slide=2 title='Origins of the Pythagorean Theorem'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title=''>
+        data-slide=3 title='Is There a Pythagorean Model for Tennis?'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Getting Started'>
+        data-slide=4 title='Research Questions'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='RStudio'>
+        data-slide=5 title='Measures of Strength in Tennis'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='R Markdown'>
+        data-slide=6 title='Data Set'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='R Markdown Resources'>
+        data-slide=7 title='Summary of Pythagorean Models'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Minimal Example: R Markdown'>
+        data-slide=8 title='Pythagorean Coefficients'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='The knitr Package'>
+        data-slide=9 title='Mid-Season Projections'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Knit in Console or RStudio?'>
+        data-slide=10 title='Win-Loss Projections'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Knit in Console or RStudio?'>
+        data-slide=11 title='Multivariate Projections'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Minimal Example: R Latex'>
+        data-slide=12 title='Multivariate + Rank Projections'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Version Control'>
+        data-slide=13 title='Match Prediction'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Git Cheat Sheet'>
+        data-slide=14 title='Prediction Accuracy for ATP 2015'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Getting Started'>
+        data-slide=15 title='Conclusions'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='RAND Code Exchange'>
+        data-slide=16 title='BP\(^2\) Insights on Federer&#39;s 2015 Season'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Slidify'>
+        data-slide=17 title='Thank You'>
          17
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Reference Material'>
-         18
       </a>
     </li>
   </ul>
@@ -512,7 +571,29 @@
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>

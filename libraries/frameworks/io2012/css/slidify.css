@@ -1,6 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Source+Code+Pro:500|Open+Sans|Oswald);
 
 /* Styles for Table of Contents */
+.boxed {   
+    text-align: center;
+    padding: 2%;
+    margin: 5px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #E0F2F1;
+}
+
 #io2012-toc {
   position: absolute;
   top:0;
@@ -39,6 +48,11 @@
 
 .title-slide hgroup > h2{
   font-family: 'Oswald', 'Calibri', sans-serif;
+}
+
+.title-slide hgroup > h3{
+  font-family: 'Oswald', 'Calibri', sans-serif;
+  color: black;
 }
 
 /* Fonts and Spacing */
@@ -352,17 +366,18 @@ pre code {
 }
 
 .title-slide {
-  background-color: #CBE7A5; /* #EDE0CF; ; #CA9F9D*/
-  /* background-image:url(http://goo.gl/EpXln); */
-}
+    background-image: url(http://img2.goodfon.su/wallpaper/big/e/b9/tennisist-tenis-tennis-kort.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+ }
 
 .title-slide hgroup > h1{
  font-family: 'Oswald', 'Helvetica', sanserif; 
 }
 
-.title-slide hgroup > h1, 
+.title-slide hgroup > h1,
 .title-slide hgroup > h2 {
-  color: #535E43 ;  /* ; #EF5150*/
+  color: #FFFFFF ;  /* ; #EF5150*/
 }
-
 
